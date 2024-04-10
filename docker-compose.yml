@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+  server: # name of the container
+    image: myserver # using the docker image "myserver"
+    ports:
+      - "5000:3000" # mapping the local port 5000 to container 3000
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    environment: # defining env variables
+      PORT: 3000
+      DB_HOST: db
+      DB_PASSWORD: password
+    deploy:
+      replicas: 3 # defining how many containers we want to launch
+  frontend:
+    image: frontend
+    ports:
+      - "4173:4173"
+    deploy:
+      replicas: 2
+  db:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes: # volumes are used to store the data we don't want to lose when container restarts
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
+    driver: local
