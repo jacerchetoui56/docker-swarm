@@ -179,10 +179,6 @@ So, to integrate swarm:
     docker stats
     ```
     
-    ![We can see the working instances](https://prod-files-secure.s3.us-west-2.amazonaws.com/aee4b84a-8295-4960-93ce-b787c52ee0e3/4ad2c41d-2f2d-4d66-851a-7d9f10a6da06/Untitled.png)
-    
-    We can see the working instances
-    
 4. **To stop all the stack at once:**
     
     ```bash
